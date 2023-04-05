@@ -25,15 +25,28 @@ function App() {
   }, [items]);
 
   const handleCheck = (id, event) => {
-    const number = priceChange();
+    let number = 0;
+    const individualItem = items.find((element) => {
+      return element.id === id;
+    });
+
+    if (
+      individualItem.checked === false ||
+      event.target.className === "priceTag"
+    ) {
+      number = priceChange(id);
+    }
+
+    console.log(event.target);
+
     flipBool(id, number);
   }; // flip check attribute
 
-  const priceChange = (message) => {
-    const input = prompt(message || "enter the cost: ");
+  const priceChange = () => {
+    const input = prompt("enter the cost: ");
 
     const number = Number(input);
-    return isNaN(number) ? priceChange("enter again, number only") : number;
+    return isNaN(number) ? priceChange() : number;
   };
 
   const flipBool = (id, number) => {

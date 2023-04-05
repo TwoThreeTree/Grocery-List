@@ -5,7 +5,7 @@ const LineItem = ({ item, handleCheck, handleDelete }) => {
   return (
     <li className="item">
       <input
-        onChange={() => handleCheck(item.id)}
+        onChange={(e) => handleCheck(item.id, e)}
         type="checkbox"
         checked={item.checked}
       />
