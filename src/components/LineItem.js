@@ -1,7 +1,7 @@
 import React from "react";
 import { FaTrashAlt } from "react-icons/fa";
 
-const LineItem = ({ item, handleCheck, handleDelete, handleChange }) => {
+const LineItem = ({ item, handleCheck, handleDelete }) => {
   return (
     <li className="item">
       <input
@@ -18,7 +18,16 @@ const LineItem = ({ item, handleCheck, handleDelete, handleChange }) => {
       >
         {item.item}
       </label>
-
+      <p
+        type="text"
+        className="priceTag"
+        onClick={(e) => {
+          console.log(e.target.className);
+          handleCheck(item.id, e);
+        }}
+      >
+        {`$ ${item.price.toFixed(2)}`}
+      </p>
       {/* <input
         id="numberInput"
         onChange={(e) => handleChange(e.target.value)}
